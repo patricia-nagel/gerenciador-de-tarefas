@@ -1,9 +1,10 @@
 # Gerenciador de Tarefas
 
-Disciplina: Engenharia de Software - Arquitetura e Padrões
-Prof: Cassia Pereira Nino
-Curso: Ciência da Computação
-Faculdade: Universidade do Vale do Rio dos Sinos - UNISINOS
+- Disciplina: Engenharia de Software - Arquitetura e Padrões
+- Prof: Cassia Pereira Nino
+- Curso: Ciência da Computação
+- Faculdade: Universidade do Vale do Rio dos Sinos - UNISINOS
+- Grupo: **Quimera**
 
 ## Integrantes
 
