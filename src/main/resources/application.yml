@@ -9,9 +9,9 @@ spring:
       pool-name: plataforma-database-pool
       auto-commit: false
       connection-timeout: 30000
-    url: "jdbc:postgresql://0.0.0.0:5432/tutorial_spring_database"
+    url: "jdbc:postgresql://localhost:5432/postgres"
     username: postgres
-    password: 123
+    password: 1234
     type: com.zaxxer.hikari.HikariDataSource
   jpa:
     properties:
@@ -19,4 +19,3 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
