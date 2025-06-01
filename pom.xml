@@ -40,13 +40,13 @@
 			<optional>true</optional>
 		</dependency>
 
-        <!--	Banco de dados	-->
+        <!--Banco de dados-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
 
-		<!--	Logs	-->
+		<!--Logs-->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
