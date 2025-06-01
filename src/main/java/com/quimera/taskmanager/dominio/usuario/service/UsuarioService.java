@@ -34,13 +34,11 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrada"));
 
-        if (nonNull(usuario)) {
-            usuario.setUsuario(usuarioRequestDto.getUsuario());
-            usuario.setEmail(usuarioRequestDto.getEmail());
-            usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
-            usuario.setNomeCompleto(usuarioRequestDto.getNomeCompleto());
-            usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
-        }
+        usuario.setUsuario(usuarioRequestDto.getUsuario());
+        usuario.setEmail(usuarioRequestDto.getEmail());
+        usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
+        usuario.setNomeCompleto(usuarioRequestDto.getNomeCompleto());
+        usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
 
         usuarioRepository.save(usuario);
     }
