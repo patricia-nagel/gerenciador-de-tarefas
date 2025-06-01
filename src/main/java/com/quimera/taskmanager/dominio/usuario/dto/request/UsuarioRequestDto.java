@@ -11,11 +11,9 @@ import java.time.LocalDate;
 @Builder
 public class UsuarioRequestDto {
 
-    private Long id;
     private String usuario;
     private String senha;
     private String email;
-    private String loginAtivo;
     private String nomeCompleto;
     private LocalDate dataNascimento;
 

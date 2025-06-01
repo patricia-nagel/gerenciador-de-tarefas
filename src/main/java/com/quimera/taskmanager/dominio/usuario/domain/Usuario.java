@@ -1,16 +1,23 @@
 package com.quimera.taskmanager.dominio.usuario.domain;
 
+import com.quimera.taskmanager.dominio.tarefa.domain.Tarefa;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
+@Table(name = "usuario")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
-    //Ajustar para classe de entidade
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String usuario;
     private String senha;
@@ -18,4 +25,7 @@ public class Usuario {
     private String loginAtivo;
     private String nomeCompleto;
     private LocalDate dataNascimento;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Tarefa> tarefas;
 }

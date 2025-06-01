@@ -1,4 +1,7 @@
 package com.quimera.taskmanager.dominio.usuario.repository;
 
-public interface UsuarioRepository {
+import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 }
