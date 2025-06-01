@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Builder
 public class TarefaRequestDto {
 
-    private Long id;
     private String titulo;
     private String descricao;
     private String situacao;
