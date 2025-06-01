@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -17,9 +18,11 @@ public class TarefaController {
     private final TarefaService tarefaService;
 
     @PostMapping
-    public void criarTarefa(@RequestBody TarefaRequestDto tarefaRequestDto) {
+    public ResponseEntity<TarefaResponseDto> criarTarefa(@RequestBody TarefaRequestDto tarefaRequestDto) {
         //POST /tasks Criar uma nova tarefa.
-        tarefaService.criarTarefa(tarefaRequestDto);
+        TarefaResponseDto tarefa = tarefaService.criarTarefa(tarefaRequestDto);
+        URI location = URI.create("/tasks/" + tarefa.getTitulo()); //Mudar para Id
+        return ResponseEntity.created(location).body(tarefa);
     }
 
     @GetMapping("/{id}")
@@ -35,14 +38,16 @@ public class TarefaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarInformacoesTarefa(@PathVariable Long id) {
+    public ResponseEntity<Void> atualizarInformacoesTarefa(@PathVariable Long id, @RequestBody TarefaRequestDto tarefaRequestDto) {
         //PUT /tasks/{id} Atualizar informações da tarefa (título, descrição, status).
-        return ResponseEntity.noContent().build();
+        tarefaService.atualizarTarefa(id, tarefaRequestDto);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void>  deletarTarefa() {
+    public ResponseEntity<Void> deletarTarefa(@PathVariable Long id) {
         //DELETE /tasks/{id} Remover uma tarefa.
+        tarefaService.excluirTarefa(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -19,9 +19,10 @@ public class TarefaService {
 
     private final TarefaRepository tarefaRepository;
 
-    public void criarTarefa(TarefaRequestDto tarefaRequestDto) {
+    public TarefaResponseDto criarTarefa(TarefaRequestDto tarefaRequestDto) {
         Tarefa tarefa = TarefaMapper.toDomain(tarefaRequestDto);
         tarefaRepository.save(tarefa);
+        return TarefaMapper.toDto(tarefa);
     }
 
     public TarefaResponseDto buscarTarefa(Long idTarefa) {
@@ -37,6 +38,22 @@ public class TarefaService {
         return tarefa.stream()
                 .map(TarefaMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public void atualizarTarefa(Long id, TarefaRequestDto tarefaRequestDto) {
+        Tarefa tarefa = tarefaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrada"));
+
+        tarefa.setTitulo(tarefaRequestDto.getTitulo());
+        tarefa.setDescricao(tarefaRequestDto.getDescricao());
+        tarefa.setDataFim(tarefaRequestDto.getDataFim());
+        tarefa.setDataInicio(tarefaRequestDto.getDataInicio());
+        //Como trocaria o usuario com JPA?
+        tarefaRepository.save(tarefa);
+    }
+
+    public void excluirTarefa(Long id) {
+        tarefaRepository.deleteById(id);
     }
 
 }
