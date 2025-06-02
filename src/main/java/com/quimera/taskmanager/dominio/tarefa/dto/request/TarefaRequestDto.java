@@ -14,6 +14,7 @@ public class TarefaRequestDto {
     private String titulo;
     private String descricao;
     private String situacao;
+    private Long idUsuario;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
 

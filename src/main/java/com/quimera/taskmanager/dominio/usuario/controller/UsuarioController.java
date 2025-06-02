@@ -4,7 +4,10 @@ import com.quimera.taskmanager.dominio.usuario.dto.request.UsuarioRequestDto;
 import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
 import com.quimera.taskmanager.dominio.usuario.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/users")
@@ -14,15 +17,17 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping()
-    public void criarUsuario(@RequestBody UsuarioRequestDto usuarioRequestDto) {
+    public ResponseEntity<UsuarioResponseDto> criarUsuario(@RequestBody UsuarioRequestDto usuarioRequestDto) {
         //POST /users Criar um novo usuário.
-        usuarioService.salvar(usuarioRequestDto);
+        UsuarioResponseDto usuario = usuarioService.salvar(usuarioRequestDto);
+        URI location = URI.create("/users/" + usuario.getId());
+        return ResponseEntity.created(location).body(usuario);
     }
 
     @GetMapping("/{id}")
-    public UsuarioResponseDto buscarInformacoesUsuario(@PathVariable Long id) {
+    public ResponseEntity<UsuarioResponseDto> buscarInformacoesUsuario(@PathVariable Long id) {
         //GET /users/{id} Obter informações de um usuário específico.
-        return usuarioService.buscarPorId(id);
+        return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
 
     @PutMapping("/{id}")

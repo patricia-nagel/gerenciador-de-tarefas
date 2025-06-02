@@ -6,6 +6,16 @@ import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
 
 public class UsuarioMapper {
 
+    public static UsuarioResponseDto toDto(Usuario usuario) {
+        return UsuarioResponseDto.builder()
+                .id(usuario.getId())
+                .usuario(usuario.getUsuario())
+                .email(usuario.getEmail())
+                .nomeCompleto(usuario.getNomeCompleto())
+                .dataNascimento(usuario.getDataNascimento())
+                .build();
+    }
+
     public static Usuario toDomain(UsuarioRequestDto usuarioRequestDto) {
         return Usuario.builder()
                 .usuario(usuarioRequestDto.getUsuario())
@@ -13,15 +23,6 @@ public class UsuarioMapper {
                 .email(usuarioRequestDto.getEmail())
                 .nomeCompleto(usuarioRequestDto.getNomeCompleto())
                 .dataNascimento(usuarioRequestDto.getDataNascimento())
-                .build();
-    }
-
-    public static UsuarioResponseDto toDto(Usuario usuario) {
-        return UsuarioResponseDto.builder()
-                .usuario(usuario.getUsuario())
-                .email(usuario.getEmail())
-                .nomeCompleto(usuario.getNomeCompleto())
-                .dataNascimento(usuario.getDataNascimento())
                 .build();
     }
 }
