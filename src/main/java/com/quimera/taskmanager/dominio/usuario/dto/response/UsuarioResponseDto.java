@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class UsuarioResponseDto {
 
+    private Long id;
     private String usuario;
     private String email;
     private String nomeCompleto;

@@ -8,6 +8,7 @@ public class TarefaMapper {
 
     public static TarefaResponseDto toDto(Tarefa tarefa) {
         return TarefaResponseDto.builder()
+                .id(tarefa.getId())
                 .titulo(tarefa.getTitulo())
                 .descricao(tarefa.getDescricao())
                 .situacao(tarefa.getSituacao())
