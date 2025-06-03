@@ -19,7 +19,7 @@ public class UsuarioController {
     @PostMapping()
     public ResponseEntity<UsuarioResponseDto> criarUsuario(@RequestBody UsuarioRequestDto usuarioRequestDto) {
         //POST /users Criar um novo usuário.
-        UsuarioResponseDto usuario = usuarioService.salvar(usuarioRequestDto);
+        UsuarioResponseDto usuario = usuarioService.criarUsuario(usuarioRequestDto);
         URI location = URI.create("/users/" + usuario.getId());
         return ResponseEntity.created(location).body(usuario);
     }
@@ -27,18 +27,20 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioResponseDto> buscarInformacoesUsuario(@PathVariable Long id) {
         //GET /users/{id} Obter informações de um usuário específico.
-        return ResponseEntity.ok(usuarioService.buscarPorId(id));
+        return ResponseEntity.ok(usuarioService.buscarUsuario(id));
     }
 
     @PutMapping("/{id}")
-    public void atualizarInformacoesUsuario(@PathVariable Long id, @RequestBody UsuarioRequestDto usuarioRequestDto) {
+    public ResponseEntity<Void> atualizarInformacoesUsuario(@PathVariable Long id, @RequestBody UsuarioRequestDto usuarioRequestDto) {
         //PUT /users/{id} Atualizar informações do usuário
-        usuarioService.atualizar(id, usuarioRequestDto);
+        usuarioService.atualizarUsuario(id, usuarioRequestDto);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public void deletarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
         //DELETE /users/{id} Remover um usuário (soft delete recomendado).
         usuarioService.softDelete(id);
+        return ResponseEntity.noContent().build();
     }
 }

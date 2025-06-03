@@ -3,13 +3,12 @@ package com.quimera.taskmanager.dominio.usuario.service;
 import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
 import com.quimera.taskmanager.dominio.usuario.dto.request.UsuarioRequestDto;
 import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
+import com.quimera.taskmanager.dominio.usuario.exception.UsuarioNaoEncontradoException;
 import com.quimera.taskmanager.dominio.usuario.mapper.UsuarioMapper;
 import com.quimera.taskmanager.dominio.usuario.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
@@ -18,24 +17,22 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
 
-    public UsuarioResponseDto salvar(UsuarioRequestDto usuarioRequestDto) {
+    public UsuarioResponseDto criarUsuario(UsuarioRequestDto usuarioRequestDto) {
         Usuario usuario = usuarioRepository.save(UsuarioMapper.toDomain(usuarioRequestDto));
+        log.info("Usuário {} - {} criada com sucesso!", usuario.getId(), usuario.getUsuario());
         return UsuarioMapper.toDto(usuario);
-        //Alterado para obter o id
     }
 
-    public UsuarioResponseDto buscarPorId(Long id) {
-        Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (nonNull(usuario)) {
-            return UsuarioMapper.toDto(usuario);
-        }
-        return null;
+    public UsuarioResponseDto buscarUsuario(Long idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(idUsuario));
+
+        return UsuarioMapper.toDto(usuario);
     }
 
-    public void atualizar(Long id, UsuarioRequestDto usuarioRequestDto) {
-
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrada"));
+    public void atualizarUsuario(Long idUsuario, UsuarioRequestDto usuarioRequestDto) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(idUsuario));
 
         usuario.setUsuario(usuarioRequestDto.getUsuario());
         usuario.setEmail(usuarioRequestDto.getEmail());
@@ -46,17 +43,12 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    public void softDelete(Long id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrada"));
+    public void softDelete(Long idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(idUsuario));
 
-        if (nonNull(usuario)) {
-            usuario.setLoginAtivo("N");
-        }
-
+        usuario.setLoginAtivo("N");
         usuarioRepository.save(usuario);
     }
-
-
 
 }
