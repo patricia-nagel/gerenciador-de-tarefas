@@ -40,7 +40,7 @@ public class TarefaService {
         List<Tarefa> tarefas = tarefaRepository.findAllByUsuarioId(usuarioId);
 
         if (tarefas.isEmpty()) {
-            log.info("Nenhuma tarefa atribuída ao usuário com ID {}", usuarioId);
+            log.info("Nenhuma tarefa atribuída ao usuário com id {}", usuarioId);
         }
 
         return tarefas.stream()
@@ -57,16 +57,18 @@ public class TarefaService {
         tarefa.setDataFim(tarefaRequestDto.getDataFim());
         tarefa.setDataInicio(tarefaRequestDto.getDataInicio());
         atribuirUsuarioATarefa(tarefa, tarefaRequestDto.getIdUsuario());
+        log.info("A tarefa com id {} foi atualizada", idTarefa);
 
         tarefaRepository.save(tarefa);
     }
 
-    public void excluirTarefa(Long id) {
-        if (!tarefaRepository.existsById(id)) {
-            throw new TarefaNaoEncontradaException(id);
+    public void excluirTarefa(Long idTarefa) {
+        if (!tarefaRepository.existsById(idTarefa)) {
+            throw new TarefaNaoEncontradaException(idTarefa);
         }
 
-        tarefaRepository.deleteById(id);
+        tarefaRepository.deleteById(idTarefa);
+        log.info("A tarefa com id {} foi excluída", idTarefa);
     }
 
     private void atribuirUsuarioATarefa(Tarefa tarefa, Long usuarioId) {
