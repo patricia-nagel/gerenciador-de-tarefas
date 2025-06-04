@@ -1,9 +1,9 @@
 package com.quimera.taskmanager.dominio.usuario.controller;
 
-import com.quimera.taskmanager.configuracao.SecurityConfigSwagger;
 import com.quimera.taskmanager.dominio.usuario.dto.request.UsuarioRequestDto;
 import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
 import com.quimera.taskmanager.dominio.usuario.service.UsuarioService;
+import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,11 @@ import java.net.URI;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 @Tag(name = "usuario", description = "Controlador para manipular dados de usuários")
-@SecurityRequirement(name = SecurityConfigSwagger.SECURITY)
+@SecurityRequirement(name = ConfiguracaoSeguranca.SECURITY)
 @Validated
 public class UsuarioController {
 
+    @Autowired
     private final UsuarioService usuarioService;
 
     @PostMapping()

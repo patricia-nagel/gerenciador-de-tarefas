@@ -1,9 +1,9 @@
 package com.quimera.taskmanager.dominio.tarefa.controller;
 
-import com.quimera.taskmanager.configuracao.SecurityConfigSwagger;
 import com.quimera.taskmanager.dominio.tarefa.dto.request.TarefaRequestDto;
 import com.quimera.taskmanager.dominio.tarefa.dto.response.TarefaResponseDto;
 import com.quimera.taskmanager.dominio.tarefa.service.TarefaService;
+import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("/tasks")
 @RequiredArgsConstructor
 @Tag(name = "tarefa", description = "Controlador para manipular dados de tarefas")
-@SecurityRequirement(name = SecurityConfigSwagger.SECURITY)
+@SecurityRequirement(name = ConfiguracaoSeguranca.SECURITY)
 @Validated
 public class TarefaController {
 

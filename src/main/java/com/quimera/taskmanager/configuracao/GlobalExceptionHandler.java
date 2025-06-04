@@ -2,6 +2,7 @@ package com.quimera.taskmanager.configuracao;
 
 import com.quimera.taskmanager.dominio.tarefa.exception.TarefaNaoEncontradaException;
 import com.quimera.taskmanager.dominio.usuario.exception.UsuarioNaoEncontradoException;
+import com.quimera.taskmanager.seguraca.exception.AutenticacaoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,6 +22,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UsuarioNaoEncontradoException.class)
     public ResponseEntity<String> handleUsuarioNaoEncontrado(UsuarioNaoEncontradoException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(AutenticacaoException.class)
+    public ResponseEntity<String> handleAutenticacao(AutenticacaoException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
