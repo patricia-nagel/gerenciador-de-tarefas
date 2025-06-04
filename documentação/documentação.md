@@ -37,7 +37,7 @@ A aplicação foi desenvolvida utilizando a Arquitetura em Três Camadas, com o 
 
 • Escalabilidade futura, permitindo a evolução independente de cada camada.
 
-#### 2.1.1 Camada de Apresentação (Controller)
+#### 2.1.1 Camada de Apresentação
 
 Responsável por expor a API RESTful ao cliente. As principais classes estão localizadas em:
 
@@ -46,7 +46,7 @@ src\main\java\com\quimera\taskmanager\dominio\tarefa\controller\TarefaController
 
 src\main\java\com\quimera\taskmanager\configuracao\GlobalExceptionHandler.java
 
-#### 2.1.2 Camada de Aplicação/Negócio (Service)
+#### 2.1.2 Camada de Aplicação/Negócio
 
 Contém a lógica de negócios da aplicação. As principais classes estão localizadas em:
 
@@ -58,7 +58,7 @@ src\main\java\com\quimera\taskmanager\dominio\tarefa\dto
 src\main\java\com\quimera\taskmanager\dominio\usuario\mapper\UsuarioMapper.java
 src\main\java\com\quimera\taskmanager\dominio\tarefa\mapper\TarefaMapper.java
 
-#### 2.1.3 Camada de Persistência (Repository)
+#### 2.1.3 Camada de Persistência
 
 Utiliza Spring Data JPA para abstração de operações com o banco de dados. As principais classes estão localizadas em:
 
