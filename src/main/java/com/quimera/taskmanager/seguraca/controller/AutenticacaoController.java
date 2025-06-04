@@ -1,11 +1,8 @@
 package com.quimera.taskmanager.seguraca.controller;
 
-import com.quimera.taskmanager.dominio.usuario.exception.UsuarioNaoEncontradoException;
 import com.quimera.taskmanager.dominio.usuario.service.UsuarioService;
 import com.quimera.taskmanager.seguraca.dto.LoginRequestDto;
 import com.quimera.taskmanager.seguraca.dto.LoginResponseDto;
-import com.quimera.taskmanager.seguraca.exception.AutenticacaoException;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +28,6 @@ public class AutenticacaoController {
     @PostMapping("/logout")
     public void realizarLogout() {
         //POST /auth/logout Logout do usuário.
+
     }
 }
