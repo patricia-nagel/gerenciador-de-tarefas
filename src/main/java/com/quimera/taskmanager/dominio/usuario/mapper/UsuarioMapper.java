@@ -3,8 +3,7 @@ package com.quimera.taskmanager.dominio.usuario.mapper;
 import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
 import com.quimera.taskmanager.dominio.usuario.dto.request.UsuarioRequestDto;
 import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
-import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.quimera.taskmanager.seguranca.configuracao.ConfiguracaoSeguranca;
 
 public class UsuarioMapper {
 

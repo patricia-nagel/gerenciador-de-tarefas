@@ -3,7 +3,7 @@ package com.quimera.taskmanager.dominio.tarefa.controller;
 import com.quimera.taskmanager.dominio.tarefa.dto.request.TarefaRequestDto;
 import com.quimera.taskmanager.dominio.tarefa.dto.response.TarefaResponseDto;
 import com.quimera.taskmanager.dominio.tarefa.service.TarefaService;
-import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
+import com.quimera.taskmanager.seguranca.configuracao.ConfiguracaoSeguranca;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

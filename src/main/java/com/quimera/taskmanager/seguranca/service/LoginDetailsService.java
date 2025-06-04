@@ -1,8 +1,8 @@
-package com.quimera.taskmanager.seguraca.service;
+package com.quimera.taskmanager.seguranca.service;
 
 import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
 import com.quimera.taskmanager.dominio.usuario.repository.UsuarioRepository;
-import com.quimera.taskmanager.seguraca.details.LoginDetails;
+import com.quimera.taskmanager.seguranca.details.LoginDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

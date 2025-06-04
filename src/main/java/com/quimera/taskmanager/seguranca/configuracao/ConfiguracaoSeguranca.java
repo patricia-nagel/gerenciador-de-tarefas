@@ -1,6 +1,6 @@
-package com.quimera.taskmanager.seguraca.configuracao;
+package com.quimera.taskmanager.seguranca.configuracao;
 
-import com.quimera.taskmanager.seguraca.filtro.AutenticacaoFiltro;
+import com.quimera.taskmanager.seguranca.filtro.AutenticacaoFiltro;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;

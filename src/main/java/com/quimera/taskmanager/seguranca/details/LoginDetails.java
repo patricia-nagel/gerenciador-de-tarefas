@@ -1,4 +1,4 @@
-package com.quimera.taskmanager.seguraca.details;
+package com.quimera.taskmanager.seguranca.details;
 
 import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
 import lombok.Getter;
@@ -10,6 +10,7 @@ import java.util.List;
 
 @Getter
 public class LoginDetails implements UserDetails {
+
     private Usuario usuario;
 
     public LoginDetails(Usuario usuario) {
