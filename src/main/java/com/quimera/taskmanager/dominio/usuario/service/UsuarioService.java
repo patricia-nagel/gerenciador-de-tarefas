@@ -19,7 +19,7 @@ public class UsuarioService {
 
     public UsuarioResponseDto criarUsuario(UsuarioRequestDto usuarioRequestDto) {
         Usuario usuario = usuarioRepository.save(UsuarioMapper.toDomain(usuarioRequestDto));
-        log.info("Usuário {} - {} criada com sucesso!", usuario.getId(), usuario.getUsuario());
+        log.info("Usuário {} - {} criado com sucesso!", usuario.getId(), usuario.getUsuario());
         return UsuarioMapper.toDto(usuario);
     }
 
