@@ -33,8 +33,11 @@ src\main\java\com\quimera\taskmanager\dominio\tarefa\mapper\TarefaMapper.java
 Utiliza Spring Data JPA para abstração de operações com o banco de dados. As principais classes estão localizadas em:
 src\main\java\com\quimera\taskmanager\dominio\usuario\repository\UsuarioRepository.java
 src\main\java\com\quimera\taskmanager\dominio\tarefa\repository\TarefaRepository.java
+
 Representa os modelos persistentes que refletem o banco de dados. As principais classes estão localizadas em:
 src\main\java\com\quimera\taskmanager\dominio\usuario\domain\Usuario.java src\main\java\com\quimera\taskmanager\dominio\tarefa\domain\Tarefa.java
+
+![image](./images/arquitetura.png)
  
 ## 3. Padrões Aplicados
 
@@ -59,9 +62,12 @@ O Global Exception Handler é utilizado para centralizar o tratamento de erros d
 ## 3. Modelagem de Dados: Diagrama do banco de dados e descrição das tabelas/coleções. 
 
 ### 3.1 Conceitual 
+
+ ![image](./images/DBconceitual.png)
  
 ### 3.2 Lógico
- 
+
+ ![image](./images/DBlogico.png)
 
 ### 3.3 Descrição das tabelas
 
@@ -96,10 +102,14 @@ fk_usuario_id INTEGER (FK)  Referência ao usuário criador da tarefa
 #### 4.1.1 POST /users 
 
 Endpoint para criar um novo usuário.
+
+ ![image](./images/POSTusers.png)
  
 #### 4.1.2 GET /users/{id} 
 
 Endpoint para obter informações de um usuário específico. 
+
+ ![image](./images/GETusers{id}.png)
  
 #### 4.1.3 PUT /users/{id} 
 
@@ -108,16 +118,21 @@ Endpoint para atualizar informações do usuário.
 #### 4.1.4 DELETE /users/{id} 
 
 Endpoint para remover um usuário. 
- 
+
+![image](./images/DELETEusers{id}.png)
 
 ### 4.2 Tarefas
 
 #### 4.2.1 POST /tasks 
 
 Endpoint para criar uma nova tarefa. 
+
+ ![image](./images/POSTtasks.png)
  
 #### 4.2.2 GET /tasks/{id} 
 Endpoint para obter detalhes de uma tarefa. 
+
+ ![image](./images/GETtasks{id}.png)
  
 #### 4.2.3 GET /tasks?assignedTo={userId}
 Endpoint para listar todas as tarefas atribuídas a um usuário. 
