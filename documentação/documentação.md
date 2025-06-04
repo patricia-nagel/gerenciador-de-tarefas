@@ -91,19 +91,19 @@ A divisão de Controller-Service-Repository é utilizado para manter uma arquite
 
 O Global Exception Handler é utilizado para centralizar o tratamento de erros da API, garantindo respostas padronizadas. 
 
-## 3. Modelagem de Dados: Diagrama do banco de dados e descrição das tabelas/coleções. 
+## 4. Modelagem de Dados: Diagrama do banco de dados e descrição das tabelas/coleções. 
 
-### 3.1 Conceitual 
+### 4.1 Conceitual 
 
  ![image](./images/DBconceitual.png)
  
-### 3.2 Lógico
+### 4.2 Lógico
 
  ![image](./images/DBlogico.png)
 
-### 3.3 Descrição das tabelas
+### 4.3 Descrição das tabelas
 
-#### 3.3.1 Tabela: usuário
+#### 4.3.1 Tabela: usuário
 
 Armazena os dados dos usuários do sistema.
 | Campo           | Tipo           | Descrição                                       |
@@ -116,7 +116,7 @@ Armazena os dados dos usuários do sistema.
 | nome_completo   | VARCHAR(100)   | Nome completo do usuário                        |
 | data_nascimento | DATE           | Data de nascimento do usuário                   |
 
-#### 3.3.2 Tabela: tarefa
+#### 4.3.2 Tabela: tarefa
 
 Armazena as tarefas criadas por usuários.
 
@@ -130,75 +130,75 @@ Armazena as tarefas criadas por usuários.
 | data_fim      | DATE           | Data de término                               |
 | fk_usuario_id | INTEGER (FK)   | Referência ao usuário criador da tarefa       |
 
-## 4. Fluxo de Requisições 
+## 5. Fluxo de Requisições 
 
-### 4.1 Usuários
+### 5.1 Usuários
 
-#### 4.1.1 POST /users 
+#### 5.1.1 POST /users 
 
 Endpoint para criar um novo usuário.
 
  ![image](./images/POSTusers.png)
  
-#### 4.1.2 GET /users/{id} 
+#### 5.1.2 GET /users/{id} 
 
 Endpoint para obter informações de um usuário específico. 
 
  ![image](./images/GETusers{id}.png)
  
-#### 4.1.3 PUT /users/{id} 
+#### 5.1.3 PUT /users/{id} 
 
 Endpoint para atualizar informações do usuário. 
 
  ![image](./images/PUTuser.png)
 
  
-#### 4.1.4 DELETE /users/{id} 
+#### 5.1.4 DELETE /users/{id} 
 
 Endpoint para remover um usuário. 
 
 ![image](./images/DELETEusers{id}.png)
 
-### 4.2 Tarefas
+### 5.2 Tarefas
 
-#### 4.2.1 POST /tasks 
+#### 5.2.1 POST /tasks 
 
 Endpoint para criar uma nova tarefa. 
 
  ![image](./images/POSTtasks.png)
  
-#### 4.2.2 GET /tasks/{id} 
+#### 5.2.2 GET /tasks/{id} 
 Endpoint para obter detalhes de uma tarefa. 
 
  ![image](./images/GETtasks{id}.png)
  
-#### 4.2.3 GET /tasks?assignedTo={userId}
+#### 5.2.3 GET /tasks?assignedTo={userId}
 Endpoint para listar todas as tarefas atribuídas a um usuário. 
 
 ![image](./images/GETtasksassignedto.png)
  
-#### 4.2.4 PUT /tasks/{id} 
+#### 5.2.4 PUT /tasks/{id} 
 Endpoint para atualizar informações da tarefa (título, descrição, status). 
  
  ![image](./images/PUTtasks.png)
 
-#### 4.2.5 DELETE /tasks/{id} 
+#### 5.2.5 DELETE /tasks/{id} 
 
 Endpoint para remover uma tarefa.
 
 ![image](./images/DELETEtasks.png)
 
  
-### 4.3 Autenticação
+### 5.3 Autenticação
 
-#### 4.3.1 POST /auth/login 
+#### 5.3.1 POST /auth/login 
 
 Endpoint para login de usuários, retornando um token para autenticação nas demais requisições.
 
-#### 4.3.2 POST /auth/logout 
+#### 5.3.2 POST /auth/logout 
 Endpoint para logout de usuários.
 
-## 5. Configuração e Deploy
+## 6. Configuração e Deploy
 
 Necessário possuir em seu computador:
 • Gerenciador de banco de dados relacional com acesso a um banco;
@@ -213,10 +213,10 @@ docker run -p 5431:5432 -v D:\Faculdade\PostgresData:/var/lib/postgresql/data -e
 
 Na pasta BD tem os arquivos necessários para a criação do banco de dados.
 
-## 6. Testes Automatizados
+## 7. Testes Automatizados
 Para garantir a qualidade, confiabilidade e manutenção do código da aplicação, adotamos uma estratégia de testes automatizados baseada em testes unitários, utilizando o framework JUnit 5 em conjunto com a ferramenta de análise de cobertura de código JaCoCo.
 
-### 6.1 Cobertura de Testes
+### 7.1 Cobertura de Testes
 
 A métrica de cobertura de testes foi obtida por meio dos relatórios gerados pelo JaCoCo. A aplicação obteve uma cobertura de 73% do código. Abaixo o relatório gerado:
 
