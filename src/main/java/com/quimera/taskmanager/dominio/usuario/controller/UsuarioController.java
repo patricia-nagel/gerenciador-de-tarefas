@@ -8,8 +8,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -19,6 +22,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 @Tag(name = "usuario", description = "Controlador para manipular dados de usuários")
 @SecurityRequirement(name = SecurityConfigSwagger.SECURITY)
+@Validated
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -26,7 +30,7 @@ public class UsuarioController {
     @PostMapping()
     @Operation(summary = "Criar um novo usuário", description = "Método para criar um novo usuário")
     @ApiResponse(responseCode = "201", description = "Usuário criado com sucesso")
-    public ResponseEntity<UsuarioResponseDto> criarUsuario(@RequestBody UsuarioRequestDto usuarioRequestDto) {
+    public ResponseEntity<UsuarioResponseDto> criarUsuario(@Valid @RequestBody UsuarioRequestDto usuarioRequestDto) {
         UsuarioResponseDto usuario = usuarioService.criarUsuario(usuarioRequestDto);
         URI location = URI.create("/users/" + usuario.getId());
         return ResponseEntity.created(location).body(usuario);
@@ -37,7 +41,7 @@ public class UsuarioController {
     @ApiResponse(responseCode = "200", description = "Usuário encontrado")
     @ApiResponse(responseCode = "404", description = "Usuário não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<UsuarioResponseDto> buscarInformacoesUsuario(@PathVariable Long id) {
+    public ResponseEntity<UsuarioResponseDto> buscarInformacoesUsuario(@NotBlank @PathVariable Long id) {
         return ResponseEntity.ok(usuarioService.buscarUsuario(id));
     }
 
@@ -46,7 +50,7 @@ public class UsuarioController {
     @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso")
     @ApiResponse(responseCode = "404", description = "Usuário não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<Void> atualizarInformacoesUsuario(@PathVariable Long id, @RequestBody UsuarioRequestDto usuarioRequestDto) {
+    public ResponseEntity<Void> atualizarInformacoesUsuario(@NotBlank @PathVariable Long id, @Valid @RequestBody UsuarioRequestDto usuarioRequestDto) {
         usuarioService.atualizarUsuario(id, usuarioRequestDto);
         return ResponseEntity.noContent().build();
     }
@@ -56,7 +60,7 @@ public class UsuarioController {
     @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso")
     @ApiResponse(responseCode = "404", description = "Usuário não encontrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarUsuario(@NotBlank @PathVariable Long id) {
         usuarioService.softDelete(id);
         return ResponseEntity.noContent().build();
     }

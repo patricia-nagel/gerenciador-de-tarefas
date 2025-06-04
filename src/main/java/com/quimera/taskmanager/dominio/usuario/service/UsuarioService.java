@@ -38,7 +38,7 @@ public class UsuarioService {
         usuario.setEmail(usuarioRequestDto.getEmail());
         usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
         usuario.setNomeCompleto(usuarioRequestDto.getNomeCompleto());
-        usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
+        usuario.setSenha(usuarioRequestDto.getSenha());
 
         usuarioRepository.save(usuario);
     }

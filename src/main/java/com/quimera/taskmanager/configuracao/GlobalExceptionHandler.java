@@ -4,8 +4,12 @@ import com.quimera.taskmanager.dominio.tarefa.exception.TarefaNaoEncontradaExcep
 import com.quimera.taskmanager.dominio.usuario.exception.UsuarioNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -18,6 +22,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UsuarioNaoEncontradoException.class)
     public ResponseEntity<String> handleUsuarioNaoEncontrado(UsuarioNaoEncontradoException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidation(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->
+                errors.put(error.getField(), error.getDefaultMessage()));
+        return ResponseEntity.badRequest().body(errors);
     }
 
 }
