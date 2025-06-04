@@ -200,9 +200,18 @@ Endpoint para logout de usuários.
 
 ## 5. Configuração e Deploy
 
-Execute: 
-- git clone https://github.com/patricia-nagel/gerenciador-de-tarefas.git
-- docker run -p 5431:5432 -v D:\Faculdade\PostgresData:/var/lib/postgresql/data -e POSTGRES_PASSWORD=1234 -d postgres
+Necessário possuir em seu computador:
+• Gerenciador de banco de dados relacional com acesso a um banco;
+• Ferramenta para realização dos requests REST;
+• IDE para execução de projetos com spring boot;
+
+Execute: git clone https://github.com/patricia-nagel/gerenciador-de-tarefas.git para clonar o repositório do projeto. Nele você terá toda a documentação, fontes e dependências necessárias para a execução. As dependências podem ser localizadas em src/pom.xml, e são pacotes para complementar o spring boot. O IntelliJ reconhece e baixa de forma automática todas as dependências. 
+
+Indicamos o uso do docker para criar um banco de dados utilizando postgresql, conforme o comando abaixo:
+
+docker run -p 5431:5432 -v D:\Faculdade\PostgresData:/var/lib/postgresql/data -e POSTGRES_PASSWORD=1234 -d postgres
+
+Na pasta BD tem os arquivos necessários para a criação do banco de dados.
 
 ## 6. Testes Automatizados
 
