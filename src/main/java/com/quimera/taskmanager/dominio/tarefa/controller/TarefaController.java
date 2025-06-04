@@ -9,8 +9,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -21,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "tarefa", description = "Controlador para manipular dados de tarefas")
 @SecurityRequirement(name = SecurityConfigSwagger.SECURITY)
+@Validated
 public class TarefaController {
 
     private final TarefaService tarefaService;
@@ -39,7 +42,7 @@ public class TarefaController {
     @ApiResponse(responseCode = "200", description = "Tarefa encontrada")
     @ApiResponse(responseCode = "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<TarefaResponseDto> buscarDetalhesTarefa(@PathVariable Long id) {
+    public ResponseEntity<TarefaResponseDto> buscarDetalhesTarefa(@NotBlank @PathVariable Long id) {
         return ResponseEntity.ok(tarefaService.buscarTarefa(id));
     }
 
@@ -47,7 +50,7 @@ public class TarefaController {
     @Operation(summary = "Buscar a lista de tarefas atribuidas a um usuário", description = "Método para buscar a lista de tarefas atribuidas a um usuário")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas para o usuário")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<List<TarefaResponseDto>> buscarTarefasPorUsuario(@RequestParam Long assignedTo) {
+    public ResponseEntity<List<TarefaResponseDto>> buscarTarefasPorUsuario(@NotBlank @RequestParam Long assignedTo) {
         return ResponseEntity.ok(tarefaService.buscarTarefasPorUsuario(assignedTo));
     }
 
@@ -56,7 +59,7 @@ public class TarefaController {
     @ApiResponse(responseCode = "204", description = "Tarefa atualizada com sucesso")
     @ApiResponse(responseCode = "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<Void> atualizarInformacoesTarefa(@PathVariable Long id, @Valid @RequestBody TarefaRequestDto tarefaRequestDto) {
+    public ResponseEntity<Void> atualizarInformacoesTarefa(@NotBlank @PathVariable Long id, @Valid @RequestBody TarefaRequestDto tarefaRequestDto) {
         tarefaService.atualizarTarefa(id, tarefaRequestDto);
         return ResponseEntity.noContent().build();
     }
@@ -66,7 +69,7 @@ public class TarefaController {
     @ApiResponse(responseCode = "204", description = "Tarefa deletada com sucesso")
     @ApiResponse(responseCode = "404", description = "Tarefa não encontrada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public ResponseEntity<Void> deletarTarefa(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarTarefa(@NotBlank @PathVariable Long id) {
         tarefaService.excluirTarefa(id);
         return ResponseEntity.noContent().build();
     }

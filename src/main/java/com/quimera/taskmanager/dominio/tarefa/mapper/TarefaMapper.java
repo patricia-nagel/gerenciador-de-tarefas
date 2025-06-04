@@ -1,5 +1,6 @@
 package com.quimera.taskmanager.dominio.tarefa.mapper;
 
+import com.quimera.taskmanager.dominio.tarefa.domain.Situacao;
 import com.quimera.taskmanager.dominio.tarefa.domain.Tarefa;
 import com.quimera.taskmanager.dominio.tarefa.dto.request.TarefaRequestDto;
 import com.quimera.taskmanager.dominio.tarefa.dto.response.TarefaResponseDto;
@@ -11,7 +12,7 @@ public class TarefaMapper {
                 .id(tarefa.getId())
                 .titulo(tarefa.getTitulo())
                 .descricao(tarefa.getDescricao())
-                .situacao(tarefa.getSituacao())
+                .situacao(Situacao.fromCodigo(tarefa.getSituacao()))
                 .dataInicio(tarefa.getDataInicio())
                 .dataFim(tarefa.getDataFim())
                 .build();
@@ -21,7 +22,7 @@ public class TarefaMapper {
         return Tarefa.builder()
                 .titulo(tarefaRequestDto.getTitulo())
                 .descricao(tarefaRequestDto.getDescricao())
-                .situacao(tarefaRequestDto.getSituacao())
+                .situacao(tarefaRequestDto.getSituacao().getCodigoSituacao())
                 .dataInicio(tarefaRequestDto.getDataInicio())
                 .dataFim(tarefaRequestDto.getDataFim())
                 .build();
