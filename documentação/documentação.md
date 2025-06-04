@@ -214,5 +214,10 @@ docker run -p 5431:5432 -v D:\Faculdade\PostgresData:/var/lib/postgresql/data -e
 Na pasta BD tem os arquivos necessários para a criação do banco de dados.
 
 ## 6. Testes Automatizados
+Para garantir a qualidade, confiabilidade e manutenção do código da aplicação, adotamos uma estratégia de testes automatizados baseada em testes unitários, utilizando o framework JUnit 5 em conjunto com a ferramenta de análise de cobertura de código JaCoCo.
+
+### 6.1 Cobertura de Testes
+
+A métrica de cobertura de testes foi obtida por meio dos relatórios gerados pelo JaCoCo. A aplicação obteve uma cobertura de 73% do código. Abaixo o relatório gerado:
 
 ![image](./images/testes-jacoco.jpeg)
