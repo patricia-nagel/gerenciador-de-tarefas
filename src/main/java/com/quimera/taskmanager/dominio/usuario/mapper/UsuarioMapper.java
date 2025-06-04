@@ -23,6 +23,7 @@ public class UsuarioMapper {
                 .email(usuarioRequestDto.getEmail())
                 .nomeCompleto(usuarioRequestDto.getNomeCompleto())
                 .dataNascimento(usuarioRequestDto.getDataNascimento())
+                .loginAtivo("S")
                 .build();
     }
 }

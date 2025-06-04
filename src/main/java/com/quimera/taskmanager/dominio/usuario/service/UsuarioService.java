@@ -19,7 +19,7 @@ public class UsuarioService {
 
     public UsuarioResponseDto criarUsuario(UsuarioRequestDto usuarioRequestDto) {
         Usuario usuario = usuarioRepository.save(UsuarioMapper.toDomain(usuarioRequestDto));
-        log.info("Usuário {} - {} criada com sucesso!", usuario.getId(), usuario.getUsuario());
+        log.info("Usuário {} - {} criado com sucesso!", usuario.getId(), usuario.getUsuario());
         return UsuarioMapper.toDto(usuario);
     }
 
@@ -38,7 +38,7 @@ public class UsuarioService {
         usuario.setEmail(usuarioRequestDto.getEmail());
         usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
         usuario.setNomeCompleto(usuarioRequestDto.getNomeCompleto());
-        usuario.setDataNascimento(usuarioRequestDto.getDataNascimento());
+        usuario.setSenha(usuarioRequestDto.getSenha());
 
         usuarioRepository.save(usuario);
     }
