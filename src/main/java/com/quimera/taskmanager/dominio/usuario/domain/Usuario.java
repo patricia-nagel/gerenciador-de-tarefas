@@ -19,7 +19,10 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String usuario;
+
     private String senha;
     private String email;
     private String loginAtivo;

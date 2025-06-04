@@ -9,6 +9,6 @@ import lombok.*;
 @Builder
 public class LoginRequestDto {
 
-    private String email; //pode ser o nick
+    private String usuario; //pode ser o nick
     private String senha;
 }
