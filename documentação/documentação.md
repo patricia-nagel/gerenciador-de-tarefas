@@ -205,3 +205,5 @@ Execute:
 - docker run -p 5431:5432 -v D:\Faculdade\PostgresData:/var/lib/postgresql/data -e POSTGRES_PASSWORD=1234 -d postgres
 
 ## 6. Testes Automatizados
+
+![image](./images/testes-jacoco.jpeg)
