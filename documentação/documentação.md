@@ -114,6 +114,9 @@ Endpoint para obter informações de um usuário específico.
 #### 4.1.3 PUT /users/{id} 
 
 Endpoint para atualizar informações do usuário. 
+
+ ![image](./images/PUTusers.png)
+
  
 #### 4.1.4 DELETE /users/{id} 
 
