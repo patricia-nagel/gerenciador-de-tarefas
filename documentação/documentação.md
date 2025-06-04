@@ -136,13 +136,20 @@ Endpoint para obter detalhes de uma tarefa.
  
 #### 4.2.3 GET /tasks?assignedTo={userId}
 Endpoint para listar todas as tarefas atribuídas a um usuário. 
+
+![image](./images/GETtasksassignedto.png)
  
 #### 4.2.4 PUT /tasks/{id} 
 Endpoint para atualizar informações da tarefa (título, descrição, status). 
  
+ ![image](./images/PUTtasks.png)
+
 #### 4.2.5 DELETE /tasks/{id} 
 
 Endpoint para remover uma tarefa.
+
+![image](./images/DELETEtasks.png)
+
  
 ### 4.3 Autenticação
 
