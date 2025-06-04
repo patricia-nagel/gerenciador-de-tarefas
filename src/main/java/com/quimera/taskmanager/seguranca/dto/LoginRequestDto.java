@@ -1,4 +1,4 @@
-package com.quimera.taskmanager.seguraca.dto;
+package com.quimera.taskmanager.seguranca.dto;
 
 import lombok.*;
 
@@ -9,6 +9,6 @@ import lombok.*;
 @Builder
 public class LoginRequestDto {
 
-    private String usuario; //pode ser o nick
+    private String usuario;
     private String senha;
 }

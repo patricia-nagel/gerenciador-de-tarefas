@@ -3,7 +3,7 @@ package com.quimera.taskmanager.dominio.usuario.controller;
 import com.quimera.taskmanager.dominio.usuario.dto.request.UsuarioRequestDto;
 import com.quimera.taskmanager.dominio.usuario.dto.response.UsuarioResponseDto;
 import com.quimera.taskmanager.dominio.usuario.service.UsuarioService;
-import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
+import com.quimera.taskmanager.seguranca.configuracao.ConfiguracaoSeguranca;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

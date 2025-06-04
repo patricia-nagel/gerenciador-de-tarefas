@@ -1,4 +1,4 @@
-package com.quimera.taskmanager.seguraca.dto;
+package com.quimera.taskmanager.seguranca.dto;
 
 import lombok.*;
 

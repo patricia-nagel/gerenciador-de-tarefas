@@ -2,7 +2,7 @@ package com.quimera.taskmanager.configuracao;
 
 import com.quimera.taskmanager.dominio.tarefa.exception.TarefaNaoEncontradaException;
 import com.quimera.taskmanager.dominio.usuario.exception.UsuarioNaoEncontradoException;
-import com.quimera.taskmanager.seguraca.exception.AutenticacaoException;
+import com.quimera.taskmanager.seguranca.exception.AutenticacaoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

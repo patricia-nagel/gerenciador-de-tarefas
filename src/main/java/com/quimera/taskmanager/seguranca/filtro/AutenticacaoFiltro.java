@@ -1,10 +1,9 @@
-package com.quimera.taskmanager.seguraca.filtro;
+package com.quimera.taskmanager.seguranca.filtro;
 
 import com.quimera.taskmanager.dominio.usuario.domain.Usuario;
 import com.quimera.taskmanager.dominio.usuario.repository.UsuarioRepository;
-import com.quimera.taskmanager.seguraca.configuracao.ConfiguracaoSeguranca;
-import com.quimera.taskmanager.seguraca.details.LoginDetails;
-import com.quimera.taskmanager.seguraca.service.JwtService;
+import com.quimera.taskmanager.seguranca.details.LoginDetails;
+import com.quimera.taskmanager.seguranca.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 @Component
 public class AutenticacaoFiltro extends OncePerRequestFilter {

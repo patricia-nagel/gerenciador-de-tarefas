@@ -1,8 +1,8 @@
-package com.quimera.taskmanager.seguraca.controller;
+package com.quimera.taskmanager.seguranca.controller;
 
 import com.quimera.taskmanager.dominio.usuario.service.UsuarioService;
-import com.quimera.taskmanager.seguraca.dto.LoginRequestDto;
-import com.quimera.taskmanager.seguraca.dto.LoginResponseDto;
+import com.quimera.taskmanager.seguranca.dto.LoginRequestDto;
+import com.quimera.taskmanager.seguranca.dto.LoginResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,6 @@ public class AutenticacaoController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> realizarLogin(@RequestBody LoginRequestDto loginUserDto) {
-        //POST /auth/login Login de usuários, retornando um token (por exemplo: JWT) para → autenticação nas demais requisições.
         LoginResponseDto token = usuarioService.autenticarUsuario(loginUserDto);
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
@@ -28,6 +27,5 @@ public class AutenticacaoController {
     @PostMapping("/logout")
     public void realizarLogout() {
         //POST /auth/logout Logout do usuário.
-
     }
 }

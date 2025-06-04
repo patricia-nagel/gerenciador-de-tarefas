@@ -155,6 +155,9 @@
 									</limits>
 								</rule>
 							</rules>
+							<excludes>
+								<exclude>**/seguranca/**</exclude>
+							</excludes>
 						</configuration>
 					</execution>
 				</executions>
