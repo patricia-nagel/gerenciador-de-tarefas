@@ -150,7 +150,7 @@ Endpoint para obter informações de um usuário específico.
 
 Endpoint para atualizar informações do usuário. 
 
- ![image](./images/PUTusers.png)
+ ![image](./images/PUTuser.png)
 
  
 #### 4.1.4 DELETE /users/{id} 
